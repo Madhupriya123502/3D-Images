@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Image Gallery</title>
+    <style>
+        /* Ensures the body takes up the full height of the screen */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        img {
+            height: 350px;
+            width: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .container {
+            width: 200px;
+            height: 350px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            animation: gallery 20s linear infinite;
+            cursor: pointer;
+        }
+
+        .container span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transform-origin: center;
+            transform: rotateY(calc(var(--i) * 45deg)) translateZ(300px);
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes gallery {
+            0% { transform: perspective(1000px) rotateY(0deg); }
+            100% { transform: perspective(1000px) rotateY(360deg); }
+        }
+
+        @keyframes slide {
+            0% { opacity: 0; }
+            25% { opacity: 1; }
+            75% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span style="--i:1"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHuyfWgcFVSJCxTVhZlxuNrlP5huccongbSQ&s" alt=""></span>
+        <span style="--i:2"><img src="https://www.shutterstock.com/image-photo/outdoor-photo-photorealistic-picture-shiva-260nw-2396744667.jpg" alt=""></span>
+        <span style="--i:3"><img src="https://thumbs.dreamstime.com/b/transparent-glass-globe-lord-shiva-holds-universe-hand-illustration-wallpaper-transparent-glass-globe-lord-shiva-holds-340034899.jpg" alt=""></span>
+        <span style="--i:4"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLPg4GUtwT3mHdI7EUFw2sdBAZGCfhsytepw&s" alt=""></span>
+        <span style="--i:5"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQytcNup8lK--KA_j-8q0qMCzm8uiKdLtQMuw&s" alt=""></span>
+        <span style="--i:6"><img src="https://www.valuequest.in/wp-content/uploads/2022/09/LordGanesha.png" alt=""></span>
+        <span style="--i:7"><img src="https://rukminim2.flixcart.com/image/850/1000/xif0q/poster/x/9/j/large-lord-sai-baba-poster-god-photo-poster-room-decoration-size-original-imagqvy63vmpgvaj.jpeg?q=90&crop=false" alt=""></span>
+        <span style="--i:8"><img src="https://cdna.artstation.com/p/assets/images/images/049/963/576/large/nikhil-mishra-sshi-ram-ji-4k-1-1a-wm.jpg?1653735963" alt=""></span>
+    </div>
+</body>
+</html>
